@@ -17,7 +17,7 @@ public class Project {
     private List<String> customer;
 
     @OneToMany
-    private List<ProjectRole> people;
+    private List<PersistableProjectRole> people;
 
     public Long getId() {
         return id;
@@ -55,11 +55,11 @@ public class Project {
         return this;
     }
 
-    public List<ProjectRole> getPeople() {
+    public List<PersistableProjectRole> getPeople() {
         return people;
     }
 
-    public Project setPeople(List<ProjectRole> people) {
+    public Project setPeople(List<PersistableProjectRole> people) {
         this.people = people;
         return this;
     }

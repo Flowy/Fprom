@@ -15,28 +15,28 @@ public class PersonServiceImpl implements PersonService {
     private PersonRepository personRepository;
 
     @Override
-    public List<Person> availablePeople() {
+    public List<? extends Person> availablePeople() {
         return personRepository.findAll();
     }
 
     @Override
-    public Person addNewPerson(Person person) {
-        if (person.getId() != null && personRepository.findById(person.getId()).isPresent()) {
+    public Person addNewPerson(Person persistablePerson) {
+        if (persistablePerson.getId() != null && personRepository.findById(persistablePerson.getId()).isPresent()) {
             throw new IllegalArgumentException("Person already exists");
         }
-        return personRepository.save(person);
+        return personRepository.save(persistablePerson);
     }
 
     @Override
-    public Person updatePerson(Person person) {
-        if (person.getId() == null || personRepository.findById(person.getId()).isEmpty()) {
+    public Person updatePerson(Person persistablePerson) {
+        if (persistablePerson.getId() == null || personRepository.findById(persistablePerson.getId()).isEmpty()) {
             throw new IllegalArgumentException("Person does not exists yet");
         }
-        return personRepository.save(person);
+        return personRepository.save(persistablePerson);
     }
 
     @Override
-    public List<Project> removePerson(Person person) {
+    public List<Project> removePerson(Person persistablePerson) {
         return null;
     }
 }

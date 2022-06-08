@@ -1,10 +1,12 @@
-package com.flowyk.fprom.domain;
+package com.flowyk.fprom.persistence;
 
 import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+@Converter
 public class ListToStringConverter implements AttributeConverter<List<String>, String> {
     @Override
     public String convertToDatabaseColumn(List<String> attribute) {
